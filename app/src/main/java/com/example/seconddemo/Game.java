@@ -41,7 +41,7 @@ public class Game extends AppCompatActivity {
         flag = false;
         Intent intent = getIntent();
         String name = intent.getStringExtra("myName");
-        textView.setText(name);
+        textView.setText("Welcome "+name);
         attemptTextView.setText("You have "+count+" attempt(s)");
         random = new Random();
         luckyNumber = random.nextInt(6) + 1;
@@ -79,8 +79,16 @@ public class Game extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Congratulations! You won the game.", Toast.LENGTH_LONG).show();
                     finish();
                 }
-                if (count == 0){
-                    Toast.makeText(getApplicationContext(), "Better luck next time! Try again.", Toast.LENGTH_LONG).show();
+//                if (count == 0){
+//                    Toast.makeText(getApplicationContext(), "Better luck next time! Try again.", Toast.LENGTH_LONG).show();
+//                    finish();
+//                }
+                if (count == 0 && number != luckyNumber){
+                    Toast.makeText(getApplicationContext(), "Better luck!", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+                else if (count == 0 && number == luckyNumber){
+                    Toast.makeText(getApplicationContext(), "Congratulations!", Toast.LENGTH_LONG).show();
                     finish();
                 }
 
